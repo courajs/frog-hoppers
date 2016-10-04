@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+.left-frog, .no-frog, .right-frog {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.left-frog {
+  background-color: red;
+}
+
+.right-frog {
+  background-color: green;
+}
+
+.no-frog {
+  border: 1px solid black;
+}
+
