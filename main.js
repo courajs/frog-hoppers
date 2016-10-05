@@ -24,6 +24,11 @@ $(document).delegate('.left-frog', 'click',
       }
 
       render(frogs)
+      if (didWin()) {
+        onWin();
+      } else if (didLose()) {
+        onLose();
+      }
     }
 )
 
@@ -39,8 +44,36 @@ $(document).delegate('.right-frog', 'click',
       }
 
       render(frogs)
+      if (didWin()) {
+        onWin();
+      } else if (didLose()) {
+        onLose();
+      }
     }
 )
+
+function didWin() {
+  return !!window.has_won;
+}
+
+function didLose() {
+  return !!window.has_lost;
+}
+
+function onWin() {
+  alert('you won!');
+  refresh();
+}
+
+function onLose() {
+  alert('you lost!');
+  refresh();
+}
+
+function refresh() {
+  frogs = ['left', 'left', 'left', 'left', 'no', 'right', 'right', 'right', 'right'];
+  render(frogs)
+}
 
 function swap(array, index_a, index_b) {
   var a = array[index_a];
