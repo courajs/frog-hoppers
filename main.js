@@ -24,11 +24,7 @@ $(document).delegate('.left-frog', 'click',
       }
 
       render(frogs)
-      if (didWin()) {
-        onWin();
-      } else if (didLose()) {
-        onLose();
-      }
+      checkGameOver();
     }
 )
 
@@ -44,16 +40,20 @@ $(document).delegate('.right-frog', 'click',
       }
 
       render(frogs)
-      if (didWin()) {
-        onWin();
-      } else if (didLose()) {
-        onLose();
-      }
+      checkGameOver();
     }
 )
 
+function checkGameOver() {
+  if (didWin()) {
+    onWin();
+  } else if (didLose()) {
+    onLose();
+  }
+}
+
 function didWin() {
-  return !!window.has_won;
+  return deepEqual(frogs, ['right','right','right','right','no','left','left','left','left']);
 }
 
 function didLose() {
@@ -81,4 +81,14 @@ function swap(array, index_a, index_b) {
 
   array[index_a] = b;
   array[index_b] = a;
+}
+
+function deepEqual(array_a, array_b) {
+  if (array_a.length !== array_b.length) {
+    return false;
+  }
+  for (var i in array_a) {
+    if (array_a[i] !== array_b[i]) return false;
+  }
+  return true;
 }
